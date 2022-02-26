@@ -7,6 +7,37 @@ body {
     background-color: wheat;
 }
 
+.main-menu {
+    display: flex;
+    flex-direction: column;
+    width: 30vh;
+    margin: auto;
+}
+
+.main-menu > p {
+    text-align: center;
+}
+
+.main-menu > * {
+    margin-top: 10px;
+}
+
+.main-menu > button {
+    background-color: whitesmoke;
+    border: 3px black solid;
+    border-radius: 10px;
+}
+
+.main-menu > button:hover {
+    background-color: white;
+    cursor: pointer;
+}
+
+.main-menu > input {
+    border: 3px black solid;
+    border-radius: 10px;
+}
+
 .game-title {
     text-align: center;
     margin: 2rem;

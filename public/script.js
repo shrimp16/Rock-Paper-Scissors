@@ -2,6 +2,7 @@ import { getOpponentMove } from '../src/opponent.js'
 
 let playerMove;
 let botMove;
+let bestOf;
 
 $('#rock').click(() => {
     playerMove = "rock";
