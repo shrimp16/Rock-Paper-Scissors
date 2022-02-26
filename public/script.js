@@ -1,3 +1,5 @@
+import { getOpponentMove } from '../src/opponent.js'
+
 let playerMove;
 let botMove;
 
@@ -17,9 +19,18 @@ $('#scissor').click(() => {
 })
 
 function play() {
-    console.log(playerMove);
-}
+    botMove = getOpponentMove();
 
-if(playerMove === botMove){
-    //it's a draw
+    if(playerMove === botMove) {
+        alert("draw");
+        return;
+    }
+
+    if(playerMove === 'rock' && botMove === 'scissor' || 
+    playerMove === 'paper' && botMove === 'rock' || 
+    playerMove === 'scissor' && botMove === 'paper'){
+        alert("player won")
+    }else{
+        alert("bot won");
+    }
 }
