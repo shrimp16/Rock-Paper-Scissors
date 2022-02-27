@@ -29,6 +29,8 @@ $('#scissor').click(() => {
 })
 
 function showGame(){
+    playerPoints = 0;
+    botPoints = 0;
     document.getElementById("main-menu").style.display = "none";
     document.getElementById("game").style.display = "block";
 }
@@ -36,6 +38,11 @@ function showGame(){
 function play() {
     botMove = getOpponentMove();
     showMoves();
+
+    console.log(Math.round(bestOf / 2));
+
+    console.log(playerPoints)
+    console.log(botPoints);
 
     if(playerMove === botMove) {
         document.getElementById("player1").style.border = "5px orange solid";
@@ -54,9 +61,28 @@ function play() {
         document.getElementById("player1").style.border = "5px red solid";
         botPoints++;
     }
+    gameEnd();
+}
+
+function gameEnd() {
+    if(playerPoints === Math.round(bestOf / 2)){
+        alert("Player won the game");
+        showMainMenu();
+    }
+
+    if(botPoints === Math.round(bestOf / 2)){
+        alert("The bot won the game");
+        showMainMenu();
+    }
+
+    return;
 }
 
 function showMoves() {
     document.getElementById("player1").src = `/images/${playerMove}.png`;
     document.getElementById("player2").src = `/images/${botMove}.png`;
+}
+
+function showMainMenu() {
+    console.log("main menu");
 }
