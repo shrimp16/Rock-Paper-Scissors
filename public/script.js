@@ -4,6 +4,9 @@ let playerMove;
 let botMove;
 let bestOf;
 
+let playerPoints;
+let botPoints;
+
 $('#start').click(() => {
     bestOf = document.querySelector('#bestof').value;
     console.log(bestOf);
@@ -32,17 +35,28 @@ function showGame(){
 
 function play() {
     botMove = getOpponentMove();
+    showMoves();
 
     if(playerMove === botMove) {
-        alert("draw");
+        document.getElementById("player1").style.border = "5px orange solid";
+        document.getElementById("player2").style.border = "5px orange solid";
         return;
     }
 
     if(playerMove === 'rock' && botMove === 'scissor' || 
     playerMove === 'paper' && botMove === 'rock' || 
     playerMove === 'scissor' && botMove === 'paper'){
-        alert("player won")
+        document.getElementById("player1").style.border = "5px green solid";
+        document.getElementById("player2").style.border = "5px red solid";
+        playerPoints++;
     }else{
-        alert("bot won");
+        document.getElementById("player2").style.border = "5px green solid";
+        document.getElementById("player1").style.border = "5px red solid";
+        botPoints++;
     }
+}
+
+function showMoves() {
+    document.getElementById("player1").src = `/images/${playerMove}.png`;
+    document.getElementById("player2").src = `/images/${botMove}.png`;
 }
