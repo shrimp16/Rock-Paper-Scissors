@@ -4,6 +4,12 @@ let playerMove;
 let botMove;
 let bestOf;
 
+$('#start').click(() => {
+    bestOf = document.querySelector('#bestof').value;
+    console.log(bestOf);
+    showGame();
+})
+
 $('#rock').click(() => {
     playerMove = "rock";
     play();
@@ -18,6 +24,11 @@ $('#scissor').click(() => {
     playerMove = "scissor";
     play();
 })
+
+function showGame(){
+    document.getElementById("main-menu").style.display = "none";
+    document.getElementById("game").style.display = "block";
+}
 
 function play() {
     botMove = getOpponentMove();
