@@ -1,5 +1,8 @@
 import { getOpponentMove } from '../src/opponent.js'
 
+let playerOneMove = document.getElementById("player1");
+let playerTwoMove = document.getElementById("player2");
+
 let playerMove;
 let botMove;
 let bestOf;
@@ -9,7 +12,7 @@ let botPoints;
 
 $('#start').click(() => {
     bestOf = document.querySelector('#bestof').value;
-    console.log(bestOf);
+    document.querySelector('#bestOf').value = "";
     showGame();
 })
 
@@ -45,20 +48,20 @@ function play() {
     console.log(botPoints);
 
     if(playerMove === botMove) {
-        document.getElementById("player1").style.border = "5px orange solid";
-        document.getElementById("player2").style.border = "5px orange solid";
+        playerOneMove.style.border = "5px orange solid";
+        playerTwoMove.style.border = "5px orange solid";
         return;
     }
 
     if(playerMove === 'rock' && botMove === 'scissor' || 
     playerMove === 'paper' && botMove === 'rock' || 
     playerMove === 'scissor' && botMove === 'paper'){
-        document.getElementById("player1").style.border = "5px green solid";
-        document.getElementById("player2").style.border = "5px red solid";
+        playerOneMove.style.border = "5px green solid";
+        playerTwoMove.style.border = "5px red solid";
         playerPoints++;
     }else{
-        document.getElementById("player2").style.border = "5px green solid";
-        document.getElementById("player1").style.border = "5px red solid";
+        playerTwoMove.style.border = "5px green solid";
+        playerOneMove.style.border = "5px red solid";
         botPoints++;
     }
     gameEnd();
@@ -67,11 +70,13 @@ function play() {
 function gameEnd() {
     if(playerPoints === Math.round(bestOf / 2)){
         alert("Player won the game");
+        //create a banner to show who won the game
         showMainMenu();
     }
 
     if(botPoints === Math.round(bestOf / 2)){
         alert("The bot won the game");
+        //create a banner to show who won the game
         showMainMenu();
     }
 
@@ -79,15 +84,15 @@ function gameEnd() {
 }
 
 function showMoves() {
-    document.getElementById("player1").src = `/images/${playerMove}.png`;
-    document.getElementById("player2").src = `/images/${botMove}.png`;
+    playerOneMove.src = `/images/${playerMove}.png`;
+    playerTwoMove.src = `/images/${botMove}.png`;
 }
 
 function showMainMenu() {
     document.getElementById("main-menu").style.display = "flex";
     document.getElementById("game").style.display = "none";
-    document.getElementById("player1").src = `/images/white.jpg`;
-    document.getElementById("player2").src = `/images/white.jpg`;
-    document.getElementById("player2").style.border = "";
-    document.getElementById("player1").style.border = "";
+    playerOneMove.src = `/images/white.jpg`;
+    playerTwoMove.src = `/images/white.jpg`;
+    playerOneMove.style.border = "";
+    playerTwoMove.style.border = "";
 }
