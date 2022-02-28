@@ -84,5 +84,10 @@ function showMoves() {
 }
 
 function showMainMenu() {
-    console.log("main menu");
+    document.getElementById("main-menu").style.display = "flex";
+    document.getElementById("game").style.display = "none";
+    document.getElementById("player1").src = `/images/white.jpg`;
+    document.getElementById("player2").src = `/images/white.jpg`;
+    document.getElementById("player2").style.border = "";
+    document.getElementById("player1").style.border = "";
 }
