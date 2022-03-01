@@ -12,7 +12,7 @@ let botPoints;
 
 $('#start').click(() => {
     bestOf = document.querySelector('#bestof').value;
-    document.querySelector('#bestOf').value = "";
+    document.querySelector('#bestof').value = "";
     showGame();
 })
 
